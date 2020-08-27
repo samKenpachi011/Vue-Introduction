@@ -1,0 +1,31 @@
+<html>
+<body>
+<head>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<div id="app-3">
+  <ol>
+  <!-- Create an instance of the todo-item component -->
+  <todo-item></todo-item>
+</ol>
+
+<ul>
+<!-- Create an instance of the todo-item component -->
+  <todo-item2></todo-item2>
+</ul>
+
+
+<h3>To Do from the third component</h3>
+ <ol>
+  <!-- Create an instance of the todo-item component -->
+  <todo-item3 v-for='item in animeList' v-bind:todo='item' v-bind:key='item.id'></todo-item3>
+</ol>
+
+</div>
+
+</body>
+</html>
+
+
+
+<script src="index3.js"></script>
