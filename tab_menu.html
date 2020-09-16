@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabs</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <!-- Style -->
+    <style>
+        .tab-button {
+            padding: 6px 10px;
+            border-top-left-radius: 3px;
+            border-top-right-radius: 3px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            background: #f0f0f0;
+            margin-bottom: -1px;
+            margin-right: -1px;
+        }
+        
+        .tab-button:hover {
+            background: #e0e0e0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- <div id="tabs_menu">
+        <button><tab1></tab1></button>
+        <button><tab2></tab2></button>
+        <button><tab3></tab3></button>
+    </div> -->
+
+    <div id="tabs_menu">
+        <button v-bind:class="['tab-button']" v-for="tab in tabs" v-bind:key="tab" v-on:click="currentTab = tab">
+{{tab}}
+</button>
+        <component v-bind:is="currentTabComponent"></component>
+
+    </div>
+
+</body>
+
+<script>
+    //create a component for each tab
+
+    Vue.component("tab-1", {
+        template: "<h3>Tab 1</h3>"
+    });
+
+    Vue.component("tab-2", {
+        template: "<h3>Tab 2</h3>"
+    });
+
+    Vue.component("tab-3", {
+        template: "<h3>Tab 3</h3>"
+    });
+
+    var app = new Vue({
+        el: "#tabs_menu",
+        data: {
+            currentTab: "1",
+            tabs: ["1", "2", "3"]
+        },
+        computed: {
+            currentTabComponent: function() {
+                return "tab-" + this.currentTab
+
+            }
+        }
+
+    })
+</script>
+
+</html>
