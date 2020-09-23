@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Computed Properties</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <!-- Computed properties are variables which their value depends on other factors.The are
+set in the computed object
+ -every time the dependency changes the computed value re-evaluates
+-->
+
+    <div id="app">
+        Counter1 value = {{counter1}} <br> Counter2 value = {{counter2}}
+        <br>
+    </div>
+
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data: {
+                counter1: 2
+            },
+            computed: {
+                //compute counter2
+                counter2() {
+                    return this.counter1 + 1
+                }
+            }
+
+        })
+    </script>
+
+</body>
+
+</html>
