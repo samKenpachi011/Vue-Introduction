@@ -12,15 +12,18 @@
     <!-- Using computed properties with a switch statement to create a calculator -->
     <div id="app">
         <!-- inputs -->
-        <input v-model="input1" placeholder="Value 1"><br>
-        <input v-model="input2" placeholder="Value 2"><br>
-        <input v-model="operator" placeholder="Operator"><br><br>
-        <button v-on:click="calculate">
+        <input v-model.number="input1" type="number" placeholder="Value 1"><br>
+        <input v-model.number="input2" type="number" placeholder="Value 2"><br> Operator:
+        <input v-model="operator"><br><br>
+
+        <!-- Using onclick -->
+        <!-- <button v-on:click.prevent="calculate">
             Calculate
-        </button>
-        <p>Result = {{result_var}}</p>
+        </button> -->
+        <p>Result = {{calculate}}</p>
+
         <!-- <p>Result = {{result_var}}</p> -->
-        <br><br> {{$data | json}}
+        <!-- <br><br> {{$data | json}} -->
     </div>
 
 
@@ -31,14 +34,63 @@
                 input1: null,
                 input2: null,
                 result_var: 0,
-                operator: null,
+                operator: " ",
             },
-            methods: {
+            computed: {
+
                 calculate() {
 
-                    return this.result_var = parseFloat(this.input1) + parseFloat(this.input2)
+                    switch (this.operator) {
+                        case '+':
+                            console.log("Adding");
+                            return this.input1 + this.input2
+
+                            break;
+                        case '-':
+                            console.log("Subtracting");
+                            return this.input1 - this.input2
+
+                            break;
+                        case '*':
+                            console.log("Multiplying");
+                            return this.input1 * this.input2
+
+                            break;
+                        case '/':
+                            console.log("Division");
+                            return this.input1 / this.input2
+
+                            break;
+
+                        default:
+
+                            return "nothing yet!!!"
+                            break;
+                    }
                 }
             }
+
+            // using a method and if statement
+            // methods: {
+            //     calculate() {
+
+            //         if (this.operator === '+') {
+            //             console.log("I am here to add");
+            //             return this.result_var = parseFloat(this.input1) + parseFloat(this.input2);
+
+            //         } else if (this.operator === '-') {
+            //             console.log("I am here to subtract");
+            //             return this.result_var = parseFloat(this.input1) - parseFloat(this.input2);
+
+            //         } else if (this.operator === '*') {
+            //             console.log("I am here to multiple");
+            //             return this.result_var = parseFloat(this.input1) * parseFloat(this.input2);
+            //         } else {
+            //             alert("You are not doing something right!!!");
+            //         }
+            //     }
+
+            // }
         });
     </script>
 
