@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width , initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Computed</title>
+</head>
+
+<body>
+    <!-- Using computed properties with a switch statement to create a calculator -->
+    <div id="app">
+        <!-- inputs -->
+        <input v-model="input1" placeholder="Value 1"><br>
+        <input v-model="input2" placeholder="Value 2"><br>
+        <input v-model="operator" placeholder="Operator"><br><br>
+        <button v-on:click="calculate">
+            Calculate
+        </button>
+        <p>Result = {{result_var}}</p>
+        <!-- <p>Result = {{result_var}}</p> -->
+        <br><br> {{$data | json}}
+    </div>
+
+
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data: {
+                input1: null,
+                input2: null,
+                result_var: 0,
+                operator: null,
+            },
+            methods: {
+                calculate() {
+
+                    return this.result_var = parseFloat(this.input1) + parseFloat(this.input2)
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>
